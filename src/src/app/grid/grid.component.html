@@ -1,0 +1,8 @@
+<div class="d3-chart" #chart></div>
+
+
+<button mat-raised-button color="primary" (click)="PartyMode()">Party Mode {{partyModeToggle ? "ON" : "OFF"}}</button>
+<br>
+<div *ngIf="partyModeToggle">
+    <button  mat-raised-button color="primary" (click)="SuperPartyMode()">SUPER PARTY MODE {{superPartyModeToggle? "ON" : "OFF"}}</button>
+</div>

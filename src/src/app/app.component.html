@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+  <img width="300" alt="Angular Logo" src="../assets/grumpturt.jpg">
+</div>
+
+<div class="row">
+  <div class="col" style='padding-left: 100px;'>
+    <h6>Selection Strategy: {{strategy}}</h6>
+    <mat-form-field appearance="fill">
+      <mat-label>Strat</mat-label>
+      <mat-select [(value)]="strategy">
+        <mat-option *ngFor="let strat of strategies" [value]="strat">{{strat}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h6>Board Size: {{bSize}}</h6>
+    <mat-form-field appearance="fill">
+      <mat-label>Size</mat-label>
+      <mat-select [(value)]="bSize">
+        <mat-option *ngFor="let size of boardSizes" [value]="size">{{size}}</mat-option>
+      </mat-select>
+    </mat-form-field>    
+    <h6>Iterations: {{iterations}}</h6>
+    <mat-slider min="{{loopCountMin}}" max="{{loopCountMax}}" step="1" [(value)]="iterations"></mat-slider>
+    <h6>Animation Speed(ms): {{animationSpeed}}</h6>
+    <mat-slider min="10" max="1000" step="10" [(value)]="animationSpeed"></mat-slider>    
+    <div >
+      <button mat-raised-button color="primary" (click)="Execute($event)">Simulate {{iterations}} games with strat</button>
+    </div>
+  </div>
+  <div class="col">
+    <h4>Results</h4>
+    <div>Average: {{avg}}</div>
+    <div>Max: {{max}}</div>
+    <div>Min: {{min}}</div>
+  </div>
+  <div class="col">
+    <h4>Grid</h4>
+    <app-grid *ngIf="chartData" [data]="chartData"></app-grid>
+  </div>
+  <div class="col-2">
+    <h4>Pick Order</h4>
+    <span *ngFor="let guess of guessOrder">{{guess}}<br></span>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
